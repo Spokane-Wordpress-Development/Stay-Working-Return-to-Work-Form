@@ -1,22 +1,26 @@
-<form class="form-horizontal">
+<form class="form-horizontal" method="post" id="return-to-work-form">
+
+	<input type="hidden" name="return_to_work_form" value="submit">
+
+	<div id="error-messages"></div>
 
 	<h2>Injury Worker's Information</h2>
 
 	<div class="form-group">
-		<label for="first-name" class="col-sm-2 control-label">Email:</label>
+		<label for="first-name" class="col-sm-2 control-label"><span class="required">*</span> First Name:</label>
 		<div class="col-sm-4">
-			<input class="form-control" id="first-name" name="first_name">
+			<input class="form-control" id="first-name" name="first_name" data-required="1" data-name="First Name">
 		</div>
-		<label for="address-1" class="col-sm-2 control-label">Address 1:</label>
+		<label for="address-1" class="col-sm-2 control-label"><span class="required">*</span> Address 1:</label>
 		<div class="col-sm-4">
-			<input class="form-control" id="address-1" name="address1">
+			<input class="form-control" id="address-1" name="address1" data-required="1" data-name="Address 1">
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="last-name" class="col-sm-2 control-label">Last Name:</label>
+		<label for="last-name" class="col-sm-2 control-label"><span class="required">*</span> Last Name:</label>
 		<div class="col-sm-4">
-			<input class="form-control" id="last-name" name="last_name">
+			<input class="form-control" id="last-name" name="last_name" data-required="1" data-name="Last Name">
 		</div>
 		<label for="address-2" class="col-sm-2 control-label">Address 2:</label>
 		<div class="col-sm-4">
@@ -25,20 +29,20 @@
 	</div>
 
 	<div class="form-group">
-		<label for="claim-number" class="col-sm-2 control-label">L&I Claim #:</label>
+		<label for="claim-number" class="col-sm-2 control-label"><span class="required">*</span> L&I Claim #:</label>
 		<div class="col-sm-4">
-			<input class="form-control" id="claim-number" name="claim_number">
+			<input class="form-control" id="claim-number" name="claim_number" data-required="1" data-name="Claim Number">
 		</div>
-		<label for="city" class="col-sm-2 control-label">City:</label>
+		<label for="city" class="col-sm-2 control-label"><span class="required">*</span> City:</label>
 		<div class="col-sm-4">
-			<input class="form-control" id="city" name="city">
+			<input class="form-control" id="city" name="city" data-required="1" data-name="City">
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="state" class="col-sm-8 control-label">State:</label>
+		<label for="state" class="col-sm-8 control-label"><span class="required">*</span> State:</label>
 		<div class="col-sm-4">
-			<select id="state" name="state" class="form-control">
+			<select id="state" name="state" class="form-control" data-required="1" data-name="State">
 				<option value="">
 					- Choose a State -
 				</option>
@@ -52,22 +56,22 @@
 	</div>
 
 	<div class="form-group">
-		<label for="zip" class="col-sm-8 control-label">Zip:</label>
+		<label for="zip" class="col-sm-8 control-label"><span class="required">*</span> Zip:</label>
 		<div class="col-sm-4">
-			<input class="form-control" id="zip" name="zip">
+			<input class="form-control" id="zip" name="zip" data-required="1" data-name="Zip">
 		</div>
 	</div>
 
 	<h2>Dates</h2>
 
 	<div class="form-group">
-		<label for="doctor-approval" class="col-sm-2 control-label">Doctor's Approval:</label>
+		<label for="doctor-approval" class="col-sm-2 control-label"><span class="required">*</span> Doctor's Approval:</label>
 		<div class="col-sm-4">
-			<input class="form-control date-picker" id="doctor-approval" name="doctor_approval">
+			<input class="form-control date-picker" id="doctor-approval" name="doctor_approval" data-required="1" data-name="Doctor Approval Date">
 		</div>
-		<label for="report-to-work" class="col-sm-2 control-label">Report to Work:</label>
+		<label for="report-to-work" class="col-sm-2 control-label"><span class="required">*</span> Report to Work:</label>
 		<div class="col-sm-4">
-			<input class="form-control date-picker" id="report-to-work" name="report_to_work">
+			<input class="form-control date-picker" id="report-to-work" name="report_to_work" data-required="1" data-name="Report to Work Date">
 		</div>
 	</div>
 
@@ -76,35 +80,35 @@
 	<div class="row">
 		<div class="col-sm-6">
 			<div class="form-group">
-				<label for="start-time" class="col-sm-4 control-label">Start Time:</label>
+				<label for="start-time" class="col-sm-4 control-label"><span class="required">*</span> Start Time:</label>
 				<div class="col-sm-8">
-					<input class="form-control" id="start-time" name="start_time" placeholder="hh:mm AM/PM">
+					<input class="form-control" id="start-time" name="start_time" placeholder="hh:mm AM/PM" data-required="1" data-name="Start Time">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="end-time" class="col-sm-4 control-label">End Time:</label>
+				<label for="end-time" class="col-sm-4 control-label"><span class="required">*</span> End Time:</label>
 				<div class="col-sm-8">
-					<input class="form-control" id="end-time" name="end_time" placeholder="hh:mm AM/PM">
+					<input class="form-control" id="end-time" name="end_time" placeholder="hh:mm AM/PM" data-required="1" data-name="End Time">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="hours-per-week" class="col-sm-4 control-label">Hours Perk Week:</label>
+				<label for="hours-per-week" class="col-sm-4 control-label"><span class="required">*</span> Hours Perk Week:</label>
 				<div class="col-sm-8">
-					<input class="form-control" id="hours-per-week" name="hours_per_week">
+					<input class="form-control" id="hours-per-week" name="hours_per_week" data-required="1" data-name="Hours Per Week">
 				</div>
 			</div>
 		</div>
 		<div class="col-sm-6">
 			<div class="form-group">
-				<label for="days-of-week" class="col-sm-4 control-label">Days of the Week:</label>
+				<label for="days-of-week" class="col-sm-4 control-label"><span class="required">*</span> Days of the Week:</label>
 				<div class="col-sm-8">
-					<input type="checkbox" id="days-of-week" name="day_of_week[]" value="1"> Monday<br>
-					<input type="checkbox" id="days-of-week" name="day_of_week[]" value="2"> Tuesday<br>
-					<input type="checkbox" id="days-of-week" name="day_of_week[]" value="3"> Wednesday<br>
-					<input type="checkbox" id="days-of-week" name="day_of_week[]" value="4"> Thursday<br>
-					<input type="checkbox" id="days-of-week" name="day_of_week[]" value="5"> Friday<br>
-					<input type="checkbox" id="days-of-week" name="day_of_week[]" value="6"> Saturday<br>
-					<input type="checkbox" id="days-of-week" name="day_of_week[]" value="7"> Sunday
+					<input type="checkbox" class="days-of-week" name="day_of_week[]" value="Monday"> Monday<br>
+					<input type="checkbox" class="days-of-week" name="day_of_week[]" value="Tuesday"> Tuesday<br>
+					<input type="checkbox" class="days-of-week" name="day_of_week[]" value="Wednesday"> Wednesday<br>
+					<input type="checkbox" class="days-of-week" name="day_of_week[]" value="Thursday"> Thursday<br>
+					<input type="checkbox" class="days-of-week" name="day_of_week[]" value="Friday"> Friday<br>
+					<input type="checkbox" class="days-of-week" name="day_of_week[]" value="Saturday"> Saturday<br>
+					<input type="checkbox" class="days-of-week" name="day_of_week[]" value="Sunday"> Sunday
 				</div>
 			</div>
 		</div>
@@ -113,11 +117,11 @@
 	<h2>Wages</h2>
 
 	<div class="form-group">
-		<label for="dollar-amount" class="col-sm-2 control-label">Dollar Amount $:</label>
+		<label for="dollar-amount" class="col-sm-2 control-label"><span class="required">*</span> Dollar Amount $:</label>
 		<div class="col-sm-4">
-			<input class="form-control" id="dollar-amount" name="dollar_amount">
+			<input class="form-control" id="dollar-amount" name="dollar_amount" data-required="1" data-name="Dollar Amount">
 		</div>
-		<label for="per" class="col-sm-2 control-label">Per:</label>
+		<label for="per" class="col-sm-2 control-label"><span class="required">*</span> Per:</label>
 		<div class="col-sm-4">
 			<select name="per" id="per" class="form-control">
 				<option value="hour">hour</option>
@@ -130,31 +134,31 @@
 	<h2>Miscellaneous Information</h2>
 
 	<div class="form-group">
-		<label for="location-address" class="col-sm-2 control-label">Location Address:</label>
+		<label for="location-address" class="col-sm-2 control-label"><span class="required">*</span> Location Address:</label>
 		<div class="col-sm-4">
-			<input class="form-control" id="location-address" name="location_address">
+			<input class="form-control" id="location-address" name="location_address" data-required="1" data-name="Location Address">
 		</div>
-		<label for="supervisor-name" class="col-sm-2 control-label">Supervisor Name:</label>
+		<label for="supervisor-name" class="col-sm-2 control-label"><span class="required">*</span> Supervisor Name:</label>
 		<div class="col-sm-4">
-			<input class="form-control" id="supervisor-name" name="supervisor_name">
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="location-city" class="col-sm-2 control-label">Location Ciy:</label>
-		<div class="col-sm-4">
-			<input class="form-control" id="location-city" name="location_city">
-		</div>
-		<label for="contact-phone" class="col-sm-2 control-label">Contact Phone #:</label>
-		<div class="col-sm-4">
-			<input class="form-control" id="contact-phone" name="contact_phone">
+			<input class="form-control" id="supervisor-name" name="supervisor_name" data-required="1" data-name="Supervisor Name">
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="location-state" class="col-sm-2 control-label">Location State:</label>
+		<label for="location-city" class="col-sm-2 control-label"><span class="required">*</span> Location Ciy:</label>
 		<div class="col-sm-4">
-			<select id="location-state" name="location_state" class="form-control">
+			<input class="form-control" id="location-city" name="location_city" data-required="1" data-name="Location City">
+		</div>
+		<label for="contact-phone" class="col-sm-2 control-label"><span class="required">*</span> Contact Phone #:</label>
+		<div class="col-sm-4">
+			<input class="form-control" id="contact-phone" name="contact_phone" data-required="1" data-name="Contact Phone">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="location-state" class="col-sm-2 control-label"><span class="required">*</span> Location State:</label>
+		<div class="col-sm-4">
+			<select id="location-state" name="location_state" class="form-control" data-required="1" data-name="Location State">
 				<option value="">
 					- Choose a State -
 				</option>
@@ -165,17 +169,17 @@
 				<?php } ?>
 			</select>
 		</div>
-		<label for="valediction" class="col-sm-2 control-label">Valediction:</label>
+		<label for="valediction" class="col-sm-2 control-label"><span class="required">*</span> Valediction:</label>
 		<div class="col-sm-4">
-			<input class="form-control" id="valediction" name="valediction">
+			<input class="form-control" id="valediction" name="valediction" data-required="1" data-name="Valediction">
 		</div>
 	</div>
 
 	<div class="form-group">
 
-		<label for="location-zip" class="col-sm-2 control-label">Location Zip:</label>
+		<label for="location-zip" class="col-sm-2 control-label"><span class="required">*</span> Location Zip:</label>
 		<div class="col-sm-4">
-			<input class="form-control" id="location-zip" name="location_zip">
+			<input class="form-control" id="location-zip" name="location_zip" data-required="1" data-name="Location Zip">
 		</div>
 	</div>
 
@@ -204,10 +208,10 @@
 		</div>
 		<div class="col-sm-6">
 			<div class="form-group">
-				<label for="job-length" class="col-sm-4 control-label">Job Length:</label>
+				<label for="job-length" class="col-sm-4 control-label"><span class="required">*</span> Job Length:</label>
 				<div class="col-sm-8">
-					<input type="checkbox" id="job-length" name="job_length[]" value="transitional/light duty"> transitional/light duty<br>
-					<input type="checkbox" id="job-length" name="job_length[]" value="permanent"> permanent
+					<input type="checkbox" class="job-length" name="job_length[]" value="transitional/light duty"> transitional/light duty<br>
+					<input type="checkbox" class="job-length" name="job_length[]" value="permanent"> permanent
 				</div>
 			</div>
 		</div>
@@ -216,11 +220,11 @@
 	<h2>Offer Letter Language Selection</h2>
 
 	<div class="form-group">
-		<label for="language" class="col-sm-2 control-label">Language(s):</label>
+		<label for="language" class="col-sm-2 control-label"><span class="required">*</span> Language(s):</label>
 		<div class="col-sm-4">
-			<input type="checkbox" id="language" name="language[]" value="English"> English<br>
-			<input type="checkbox" id="language" name="language[]" value="Russian"> Russian<br>
-			<input type="checkbox" id="language" name="language[]" value="Spanish"> Spanish
+			<input type="checkbox" class="language" name="language[]" value="English"> English<br>
+			<input type="checkbox" class="language" name="language[]" value="Russian"> Russian<br>
+			<input type="checkbox" class="language" name="language[]" value="Spanish"> Spanish
 		</div>
 	</div>
 
