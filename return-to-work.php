@@ -33,8 +33,9 @@ class ReturnToWork {
 	const VERSION = '1.0.0';
 	const VERSION_JS = '1.0.0';
 	const VERSION_CSS = '1.0.0';
-
 	const OPTION_VERSION = 'return_to_work_form_version';
+
+	public $states = array();
 	
 	public function activate()
 	{
@@ -43,9 +44,65 @@ class ReturnToWork {
 	
 	public function init()
 	{
-		wp_enqueue_script( 'return-to-work-form-js', plugin_dir_url( __FILE__ ) . 'return-to-work-form.js', array( 'jquery' ), ( WP_DEBUG ) ? time() : self::VERSION_JS, TRUE );
+		wp_enqueue_script( 'jquery-ui-datepicker' );
+		wp_enqueue_style( 'jquery-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css' );
+		wp_enqueue_script( 'return-to-work-form-js', plugin_dir_url( __FILE__ ) . 'return-to-work-form.js', array( 'jquery' ), ( WP_DEBUG ) ? time() : self::VERSION_JS );
 		wp_enqueue_style( 'return-to-work-form-bootstrap-css', plugin_dir_url( __FILE__ ) . 'bootstrap.css', array(), ( WP_DEBUG ) ? time() : self::VERSION_CSS );
 		wp_enqueue_style( 'return-to-work-form-css', plugin_dir_url( __FILE__ ) . 'return-to-work-form.css', array(), ( WP_DEBUG ) ? time() : self::VERSION_CSS );
+
+		$this->states = array(
+			'AK' => 'Alaska',
+			'AL' => 'Alabama',
+			'AR' => 'Arkansas',
+			'AZ' => 'Arizona',
+			'CA' => 'California',
+			'CO' => 'Colorado',
+			'CT' => 'Connecticut',
+			'DC' => 'Washington DC',
+			'DE' => 'Delaware',
+			'FL' => 'Florida',
+			'GA' => 'Georgia',
+			'HI' => 'Hawaii',
+			'IA' => 'Iowa',
+			'ID' => 'Idaho',
+			'IL' => 'Illinois',
+			'IN' => 'Indiana',
+			'KS' => 'Kansas',
+			'KY' => 'Kentucky',
+			'LA' => 'Louisiana',
+			'MA' => 'Massachusetts',
+			'MD' => 'Maryland',
+			'ME' => 'Maine',
+			'MI' => 'Michigan',
+			'MN' => 'Minnesota',
+			'MO' => 'Missouri',
+			'MS' => 'Mississippi',
+			'MT' => 'Montana',
+			'NC' => 'North Carolina',
+			'ND' => 'North Dakota',
+			'NE' => 'Nebraska',
+			'NH' => 'New Hampshire',
+			'NJ' => 'New Jersey',
+			'NM' => 'New Mexico',
+			'NV' => 'Nevada',
+			'NY' => 'New York',
+			'OH' => 'Ohio',
+			'OK' => 'Oklahoma',
+			'OR' => 'Oregon',
+			'PA' => 'Pennsylvania',
+			'RI' => 'Rhode Island',
+			'SC' => 'South Carolina',
+			'SD' => 'South Dakota',
+			'TN' => 'Tennessee',
+			'TX' => 'Texas',
+			'UT' => 'Utah',
+			'VA' => 'Virginia',
+			'VT' => 'Vermont',
+			'WA' => 'Washington',
+			'WI' => 'Wisconsin',
+			'WV' => 'West Virginia',
+			'WY' => 'Wyoming'
+		);
 	}
 	
 	public function shortcode()
