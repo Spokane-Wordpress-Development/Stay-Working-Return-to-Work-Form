@@ -58,6 +58,10 @@
                     scrollTop: error_messages.offset().top - 40
                 }, 1000);
             }
+            else
+            {
+                $('#return-to-work-form').submit();
+            }
 
         });
 
