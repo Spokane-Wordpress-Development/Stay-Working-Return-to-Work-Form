@@ -149,16 +149,52 @@ class ReturnToWork {
 	{
 		if ( isset( $_POST['return_to_work_form'] ) && $_POST['return_to_work_form'] == 'submit' )
 		{
+			echo "
+				<html>
+				<head>
+				<title>Return to Work Letter</title>
+				<style>
+					html, body {
+						font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+						font-size: 13px;
+					}
+					.letter {
+						page-break-after: always;
+						margin-left: auto;
+						margin-right: auto;
+						max-width: 800px;
+					}
+					.note {
+						 color: red; 
+						 border: 3px solid red; 
+						 padding: 5px; 
+						 text-align: center;
+						 font-weight: bold;
+					}
+					@media print {
+						.letter {
+							max-width: 100%;
+						}
+						.note {
+							display: none;
+						}
+					}
+				</style>
+				</head>
+				<body>";
+
 			$languages = $_POST['language'];
 			foreach ( $languages as $language )
 			{
 				$letter = '
-					<p style="color:red; border:3px solid red; padding:5px; display:inline-block;">Note: A legal offer requires personal or certified mail delivery.</p>
-					<p>[[date]]</p>
+					<div class="letter">
+					<p class="note">Note: A legal offer requires personal or certified mail delivery.</p>
+					<p>' .  date( 'F j, Y' ) . '</p>
 					<p>
-						[[firstName]] [[lastName]]<br />
-						[[addressOne]][[addressTwo]]<br />
-						[[city]], [[state]] [[zip]]
+						' . $_POST['first_name'] . ' ' . $_POST['last_name'] . '<br />
+						' . $_POST['address1'] . '<br />
+						' . ( ( strlen( $_POST['address2'] ) > 0 ) ? $_POST['address2'] . '<br />' : '' ) . '
+						' . $_POST['city'] . ', ' . $_POST['state'] . ' ' . $_POST['zip'] . '
 					</p>';
 
 				if ( $language == 'English' )
@@ -214,7 +250,6 @@ class ReturnToWork {
 				elseif ( $language == 'Russian' )
 				{
 					$letter .= "
-						
 						<p>
 							По вопросу: Предложение вернуться на работу<br />
 							L &amp; I Номер иска [[claimNo]]
@@ -317,9 +352,153 @@ class ReturnToWork {
 						</p>";
 				}
 
+				$letter = str_replace( '[[claimNo]]', $_POST['claim_number'], $letter );
+				$letter = str_replace( '[[firstName]]', $_POST['first_name'], $letter );
+
+				$job_lengths = $_POST['job_length'];
+				$job_lengths = implode( ', ', $job_lengths );
+				if ( $language == 'Spanish' )
+				{
+					//$job_lengths = str_replace( 'transitional/light duty', '', $job_lengths );
+					//$job_lengths = str_replace( 'permanent', '', $job_lengths );
+				}
+				elseif ( $language == 'Russian' )
+				{
+					//$job_lengths = str_replace( 'transitional/light duty', '', $job_lengths );
+					//$job_lengths = str_replace( 'permanent', '', $job_lengths );
+				}
+
+				$letter = str_replace( '[[tld]]', '', $letter );
+				$letter = str_replace( '[[permanent]]', $job_lengths, $letter );
+
+				$letter = str_replace( '[[drApprovalDate]]', $_POST['doctor_approval'], $letter );
+				$letter = str_replace( '[[workDate]]', $_POST['report_to_work'], $letter );
+				$letter = str_replace( '[[locationAddress]]', $_POST['location_address'], $letter );
+				$letter = str_replace( '[[locationCity]]', $_POST['location_city'], $letter );
+				$letter = str_replace( '[[locationState]]', $_POST['location_state'], $letter );
+				$letter = str_replace( '[[locationZip]]', $_POST['location_zip'], $letter );
+				$letter = str_replace( '[[supervisorName]]', $_POST['supervisor_name'], $letter );
+				$letter = str_replace( '[[startTime]]', $_POST['start_time'], $letter );
+				$letter = str_replace( '[[endTime]]', $_POST['end_time'], $letter );
+
+				$days = array();
+				foreach ( $_POST['day_of_week'] AS $day_of_week )
+				{
+					$days[] = $day_of_week;
+				}
+
+				if ( count( $days ) == 1 )
+				{
+					$days_of_week = $days[0];
+				}
+				else
+				{
+					$last_day_of_week = $days[ count( $days ) - 1 ];
+					unset( $days[ count( $days ) - 1 ] );
+					$days_of_week = implode( ', ', $days );
+
+					if ( $language == 'English' )
+					{
+						$days_of_week .= ' and';
+						$days_of_week .= ' ' . $last_day_of_week;
+					}
+					elseif ( $language == 'Spanish' )
+					{
+						$days_of_week .= ' y';
+						$days_of_week .= ' ' . $last_day_of_week;
+						$days_of_week = str_replace( 'Monday', 'Lunes', $days_of_week );
+						$days_of_week = str_replace( 'Tuesday', 'Martes', $days_of_week );
+						$days_of_week = str_replace( 'Wednesday', 'Miércoles', $days_of_week );
+						$days_of_week = str_replace( 'Thursday', 'Jueves', $days_of_week );
+						$days_of_week = str_replace( 'Friday', 'Viernes', $days_of_week );
+						$days_of_week = str_replace( 'Saturday', 'Sábado', $days_of_week );
+						$days_of_week = str_replace( 'Sunday', 'Domingo', $days_of_week );
+					}
+					elseif ( $language == 'Russian' )
+					{
+						$days_of_week .= ' и';
+						$days_of_week .= ' ' . $last_day_of_week;
+						$days_of_week = str_replace( 'Monday', 'понедельник', $days_of_week );
+						$days_of_week = str_replace( 'Tuesday', 'вторник', $days_of_week );
+						$days_of_week = str_replace( 'Wednesday', 'среда', $days_of_week );
+						$days_of_week = str_replace( 'Thursday', 'четверг', $days_of_week );
+						$days_of_week = str_replace( 'Friday', 'пятница', $days_of_week );
+						$days_of_week = str_replace( 'Saturday', 'суббота', $days_of_week );
+						$days_of_week = str_replace( 'Sunday', 'воскресенье', $days_of_week );
+					}
+				}
+				$letter = str_replace( '[[daysOfTheWeek]]', $days_of_week, $letter );
+
+				$letter = str_replace( '[[hoursPerWeek]]', $_POST['hours_per_week'], $letter );
+				$letter = str_replace( '[[wage]]', $_POST['dollar_amount'], $letter );
+
+				$wage_duration = $_POST['per'];
+				if ( $language == 'Spanish' )
+				{
+					switch ( $wage_duration )
+					{
+						case 'hour':
+							$wage_duration = 'hora';
+							break;
+						case 'day':
+							$wage_duration = 'día';
+							break;
+						case 'week':
+							$wage_duration = 'semana';
+							break;
+					}
+				}
+				elseif ( $language == 'Russian' )
+				{
+					switch ( $wage_duration )
+					{
+						case 'hour':
+							$wage_duration = 'час';
+							break;
+						case 'day':
+							$wage_duration = 'день';
+							break;
+						case 'week':
+							$wage_duration = 'неделя';
+							break;
+					}
+				}
+				$letter = str_replace( '[[wageDuration]]', $wage_duration, $letter );
+				$letter = str_replace( '[[valediction]]', $_POST['valediction'], $letter );
+				$letter = str_replace( '[[contactPhone]]', $_POST['contact_phone'], $letter );
+				if ( strlen( $_POST['cc1'] ) > 0 )
+				{
+					$letter = str_replace( '[[ccLine1]]', $_POST['cc1'] . '<br>', $letter );
+				}
+				else
+				{
+					$letter = str_replace( '[[ccLine1]]', '', $letter );
+				}
+				if ( strlen( $_POST['cc2'] ) > 0 )
+				{
+					$letter = str_replace( '[[ccLine2]]', $_POST['cc2'] . '<br>', $letter );
+				}
+				else
+				{
+					$letter = str_replace( '[[ccLine2]]', '', $letter );
+				}
+				if ( strlen( $_POST['cc3'] ) > 0 )
+				{
+					$letter = str_replace( '[[ccLine3]]', $_POST['cc3'] . '<br>', $letter );
+				}
+				else
+				{
+					$letter = str_replace( '[[ccLine3]]', '', $letter );
+				}
+
+				$letter .= "</div>";
 				echo $letter;
-				echo '<div style="page-break-after:always"></div>';
 			}
+
+			echo "
+				</body>
+				</html>";
+
 			exit;
 		}
 	}
