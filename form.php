@@ -92,7 +92,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="hours-per-week" class="col-sm-4 control-label"><span class="required">*</span> Hours Perk Week:</label>
+				<label for="hours-per-week" class="col-sm-4 control-label"><span class="required">*</span> Hours Per Week:</label>
 				<div class="col-sm-8">
 					<input class="form-control" id="hours-per-week" name="hours_per_week" data-required="1" data-name="Hours Per Week">
 				</div>
