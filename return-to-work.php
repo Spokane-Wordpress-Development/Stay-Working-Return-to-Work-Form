@@ -153,6 +153,7 @@ class ReturnToWork {
 				<html>
 				<head>
 				<title>Return to Work Letter</title>
+				<meta charset=\"UTF-8\"> 
 				<style>
 					html, body {
 						font-family: 'Open Sans', Helvetica, Arial, sans-serif;
@@ -430,7 +431,12 @@ class ReturnToWork {
 				$letter = str_replace( '[[daysOfTheWeek]]', $days_of_week, $letter );
 
 				$letter = str_replace( '[[hoursPerWeek]]', $_POST['hours_per_week'], $letter );
-				$letter = str_replace( '[[wage]]', $_POST['dollar_amount'], $letter );
+
+				$dollar_amount = $_POST['dollar_amount'];
+				$dollar_amount = '0' . preg_replace( '/[^0-9\.]/', '', $dollar_amount );
+				$dollar_amount = number_format( $dollar_amount, 2 );
+
+				$letter = str_replace( '[[wage]]', $dollar_amount, $letter );
 
 				$wage_duration = $_POST['per'];
 				if ( $language == 'Spanish' )
@@ -468,7 +474,7 @@ class ReturnToWork {
 				$letter = str_replace( '[[contactPhone]]', $_POST['contact_phone'], $letter );
 				if ( strlen( $_POST['cc1'] ) > 0 )
 				{
-					$letter = str_replace( '[[ccLine1]]', $_POST['cc1'] . '<br>', $letter );
+					$letter = str_replace( '[[ccLine1]]', 'CC: ' . $_POST['cc1'] . '<br>', $letter );
 				}
 				else
 				{
@@ -476,7 +482,7 @@ class ReturnToWork {
 				}
 				if ( strlen( $_POST['cc2'] ) > 0 )
 				{
-					$letter = str_replace( '[[ccLine2]]', $_POST['cc2'] . '<br>', $letter );
+					$letter = str_replace( '[[ccLine2]]', 'CC: ' .$_POST['cc2'] . '<br>', $letter );
 				}
 				else
 				{
@@ -484,7 +490,7 @@ class ReturnToWork {
 				}
 				if ( strlen( $_POST['cc3'] ) > 0 )
 				{
-					$letter = str_replace( '[[ccLine3]]', $_POST['cc3'] . '<br>', $letter );
+					$letter = str_replace( '[[ccLine3]]', 'CC: ' .$_POST['cc3'] . '<br>', $letter );
 				}
 				else
 				{

@@ -145,7 +145,7 @@
 	</div>
 
 	<div class="form-group">
-		<label for="location-city" class="col-sm-2 control-label"><span class="required">*</span> Location Ciy:</label>
+		<label for="location-city" class="col-sm-2 control-label"><span class="required">*</span> Location City:</label>
 		<div class="col-sm-4">
 			<input class="form-control" id="location-city" name="location_city" data-required="1" data-name="Location City">
 		</div>
