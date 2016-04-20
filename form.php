@@ -169,14 +169,6 @@
 				<?php } ?>
 			</select>
 		</div>
-		<label for="valediction" class="col-sm-2 control-label"><span class="required">*</span> Valediction:</label>
-		<div class="col-sm-4">
-			<input class="form-control" id="valediction" name="valediction" data-required="1" data-name="Valediction">
-		</div>
-	</div>
-
-	<div class="form-group">
-
 		<label for="location-zip" class="col-sm-2 control-label"><span class="required">*</span> Location Zip:</label>
 		<div class="col-sm-4">
 			<input class="form-control" id="location-zip" name="location_zip" data-required="1" data-name="Location Zip">

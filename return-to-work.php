@@ -234,9 +234,9 @@ class ReturnToWork {
 							If you do not call me or report to work, that will be considered as your decision to reject this offer of employment, and your time loss benefits may be affected. 
 							Please remember to bring this letter with you or return by mail with your signature.
 						</p>
-						<p>Very truly yours,</p>
+						<p>Sincerely,</p>
 						<p>&nbsp;</p>
-						<p>[[valediction]]</p>
+						<p>&nbsp;</p>
 						<p>Enclosed: Job Description approved by attending physician</p>
 						<p>[[ccLine1]][[ccLine2]][[ccLine3]]</p>
 						<p>[ &nbsp;] I reject the above offered position. OR</p>
@@ -283,7 +283,7 @@ class ReturnToWork {
 						<p>С уважением,</p>
 						<p>&nbsp;</p>
 						<p>
-							[[valediction]]<br />
+							<br />
 							________________________________________________________<br />
 							Подпись руководителя, отдела кадров или владельца компании
 						</p>
@@ -340,7 +340,7 @@ class ReturnToWork {
 							(Supervisor o H.R. propietario o firma)
 						</p>
 						<p>&nbsp;</p>
-						<p>[[valediction]]</p>
+						<p>&nbsp;</p>
 						<p>Adjunto: Descripci&oacute;n del trabajo aprobado por el m&eacute;dico</p>
 						<p>[[ccLine1]][[ccLine2]][[ccLine3]]</p>
 						<p>[ &nbsp;] Yo rechazo la posici&oacute;n ofrecida. O</p>
@@ -470,7 +470,6 @@ class ReturnToWork {
 					}
 				}
 				$letter = str_replace( '[[wageDuration]]', $wage_duration, $letter );
-				$letter = str_replace( '[[valediction]]', $_POST['valediction'], $letter );
 				$letter = str_replace( '[[contactPhone]]', $_POST['contact_phone'], $letter );
 				if ( strlen( $_POST['cc1'] ) > 0 )
 				{
