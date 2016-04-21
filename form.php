@@ -4,7 +4,7 @@
 
 	<div id="error-messages"></div>
 
-	<h2>Injury Worker's Information</h2>
+	<h2>Injured Worker's Information</h2>
 
 	<div class="form-group">
 		<label for="first-name" class="col-sm-2 control-label"><span class="required">*</span> First Name:</label>
